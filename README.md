@@ -103,5 +103,3 @@ else:
     <li>Execute o menu principal:</li>
     <pre><code>python menu.py</code></pre>
 </ol>
-
-<p>Este projeto é uma excelente prática de integração entre Python, programação orientada a objetos e bancos de dados relacionais.</p>
