@@ -1,6 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
 
+# 🔌Conexão com o banco de dados
 class Banco:
     def __init__(self, host='localhost', user='root', password='mysql', database=None):
         try:
@@ -11,6 +12,10 @@ class Banco:
                 database=database
             )
             self.cursor = self.conexao.cursor()
+
+# Função: Este trecho é responsável por inicializar a conexão com o MySQL,
+# permitindo que o sistema se comunique com o banco de dados.
+
             if database:
                 print(f"✅ Conectado ao banco de dados '{database}'.")
             else:
@@ -24,6 +29,7 @@ class Banco:
             self.conexao.close()
             print("✅ Conexão com o banco de dados fechada.")
 
+# 🔌Conexão com o banco de dados
 def criar_banco_e_tabelas(banco, nome_banco):
     try:
         banco.cursor.execute(f"CREATE DATABASE IF NOT EXISTS {nome_banco}")
@@ -67,6 +73,8 @@ def criar_banco_e_tabelas(banco, nome_banco):
         print("✅ Tabelas criadas ou já existentes.")
     except Error as e:
         print(f"❌ Erro ao criar banco/tabelas: {e}")
+
+# Função: Cria o banco de dados e as três tabelas principais: cliente, conta e transacao.
 
 if __name__ == "__main__":
     nome_banco = 'simulador_banco_BPP'
