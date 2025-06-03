@@ -97,8 +97,11 @@ else:
 <ol>
     <li>Instale o MySQL e crie um usuário com permissão para criar bancos de dados.</li>
     <li>Clone o repositório:</li>
+</ol>
+<br><br><br>
 
-    ## 🏦 Simulador de Banco — Trechos Importantes do Código
+
+## 🏦 Simulador de Banco — Trechos Importantes do Código
 
 ## 📁 banco.py
 #### 🔌Conexão com o banco de dados
