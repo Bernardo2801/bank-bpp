@@ -7,6 +7,7 @@ class BancoOperacoes:
         self.cursor = banco.cursor
         self.conexao = banco.conexao
 
+# 👤 Cadastro de cliente C(reate)RUD
     def cadastrar_cliente(self, nome, cpf):
         try:
             self.cursor.execute("INSERT INTO cliente (nome, cpf) VALUES (%s, %s)", (nome, cpf))
@@ -14,11 +15,13 @@ class BancoOperacoes:
             print(f"✅ Cliente '{nome}' cadastrado com sucesso.")
         except Error as e:
             print(f"❌ Erro ao cadastrar cliente: {e}")
+#Função: Insere um novo cliente no banco de dados.
 
     def listar_clientes(self):
         self.cursor.execute("SELECT * FROM cliente")
         return self.cursor.fetchall()
 
+# 💳 Cadastro de conta C(reate)RUD
     def cadastrar_conta(self, id_cliente, tipo_conta, limite=None, dia_rendimento=None):
         try:
             self.cursor.execute("""
@@ -29,6 +32,7 @@ class BancoOperacoes:
             print(f"✅ Conta '{tipo_conta}' cadastrada com sucesso para o cliente ID {id_cliente}.")
         except Error as e:
             print(f"❌ Erro ao cadastrar conta: {e}")
+#Função: Cria uma conta corrente ou poupança associada a um cliente.
 
     def listar_contas(self):
         self.cursor.execute("""
@@ -38,6 +42,7 @@ class BancoOperacoes:
         """)
         return self.cursor.fetchall()
 
+# ➕ Depósito CRU(pdate)D
     def depositar(self, id_conta, valor):
         try:
             self.cursor.execute("SELECT saldo FROM conta WHERE id_conta = %s", (id_conta,))
@@ -59,7 +64,9 @@ class BancoOperacoes:
             print(f"✅ Depósito de R${valor_decimal:.2f} realizado com sucesso.")
         except Error as e:
             print(f"❌ Erro ao realizar depósito: {e}")
+# Atualiza o saldo da conta e registra a transação.
 
+# ➖ Saque com verificação de saldo e limite CRU(pdate)D
     def sacar(self, id_conta, valor):
         try:
             self.cursor.execute("SELECT saldo, limite FROM conta WHERE id_conta = %s", (id_conta,))
@@ -87,7 +94,9 @@ class BancoOperacoes:
             print(f"✅ Saque de R${valor_decimal:.2f} realizado com sucesso.")
         except Error as e:
             print(f"❌ Erro ao realizar saque: {e}")
+#Função: Permite saque apenas se o valor não exceder o saldo + limite.
 
+# 📄 Ver extrato CR(ead)UD
     def ver_extrato(self, id_conta):
         try:
             self.cursor.execute("SELECT * FROM conta WHERE id_conta = %s", (id_conta,))
@@ -107,7 +116,9 @@ class BancoOperacoes:
                 print(f"{t[2]} - {t[0]}: R${t[1]:.2f}")
         except Error as e:
             print(f"❌ Erro ao visualizar extrato: {e}")
+# Função: Mostra o histórico de transações da conta.
 
+# ❌ Exclusão de conta e cliente CRUD(elete)
     def deletar_conta(self, id_conta):
         try:
             # Deletar transações associadas
@@ -136,3 +147,4 @@ class BancoOperacoes:
             print(f"✅ Cliente ID {id_cliente} e todas as suas contas/transações foram deletados com sucesso.")
         except Error as e:
             print(f"❌ Erro ao deletar cliente: {e}")
+#Função: Remove uma conta e suas transações, ou um cliente com todas suas contas.
