@@ -97,8 +97,14 @@ else:
 <ol>
     <li>Instale o MySQL e crie um usuário com permissão para criar bancos de dados.</li>
     <li>Clone o repositório:</li>
+        <pre><code>git clone https://github.com/SEU_USUARIO/simulador-banco.git</code></pre>
+    <li>Instale o conector MySQL:</li>
+    <pre><code>pip install mysql-connector-python</code></pre>
+    <li>Execute o menu principal:</li>
+    <pre><code>python menu.py</code></pre>
 </ol>
-<br><br><br>
+
+<br><br><br><br><br><br><br><br><br><br><br><br>
 
 
 ## 🏦 Simulador de Banco — Trechos Importantes do Código
@@ -220,9 +226,3 @@ def deletar_cliente(self, id_cliente):
 ```
 #### Função:
 Remove uma conta e suas transações, ou um cliente com todas suas contas.
-    <pre><code>git clone https://github.com/SEU_USUARIO/simulador-banco.git</code></pre>
-    <li>Instale o conector MySQL:</li>
-    <pre><code>pip install mysql-connector-python</code></pre>
-    <li>Execute o menu principal:</li>
-    <pre><code>python menu.py</code></pre>
-</ol>
