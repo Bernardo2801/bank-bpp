@@ -114,11 +114,7 @@ class Banco:
         )
         self.cursor = self.conexao.cursor()
 ```
-#### Função:
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
+#### Função: Este trecho é responsável por inicializar a conexão com o MySQL, permitindo que o sistema se comunique com o banco de dados.
 
 
 #### 🛠️ Criação do banco e tabelas
