@@ -11,6 +11,7 @@ def menu():
     banco = Banco(database=nome_banco)
     operacoes = BancoOperacoes(banco)
 
+# 📋 Menu interativo
     while True:
         banco.cursor.execute("SELECT COUNT(*) FROM cliente")
         clientes = banco.cursor.fetchone()[0]
@@ -22,6 +23,7 @@ def menu():
         print("1 - Cadastrar Cliente")
         print("2 - Cadastrar Conta")
 
+# 🧠 Verificação de pré-condições
         if clientes > 0 and contas > 0:
             print("3 - Depositar")
             print("4 - Sacar")
@@ -30,6 +32,7 @@ def menu():
             print("3 - Depositar (desabilitado - cadastre cliente e conta primeiro)")
             print("4 - Sacar (desabilitado - cadastre cliente e conta primeiro)")
             print("5 - Ver Extrato (desabilitado - cadastre cliente e conta primeiro)")
+# Função: Evita operações inválidas antes de cadastrar clientes e contas.
 
         print("6 - Deletar Conta")
         print("7 - Deletar Cliente")
@@ -117,6 +120,8 @@ def menu():
 
         else:
             print("Opção inválida ou desabilitada.")
+
+#Função: Interface de linha de comando para interagir com o sistema. Permite cadastrar, consultar e deletar dados.
 
 if __name__ == "__main__":
     menu()
